@@ -54,7 +54,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
-            <Button Content="Lista Completa" Width="120" Height="40" Margin="5"/>
+            <Button Content="Lista Completa" Width="120" Height="40" Margin="5" Click="Button_Click"/>
             <Button Content="Completadas" Width="120" Height="40" Margin="5"/>
             <Button Content="En Progreso" Width="120" Height="40" Margin="5"/>
             <Button Content="Pendientes" Width="120" Height="40" Margin="5"/>

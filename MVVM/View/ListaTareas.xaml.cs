@@ -25,7 +25,7 @@ namespace PracticaEx.MVVM.View
             InitializeComponent();
         }
 
-        private void Frame_Navigated(object sender, NavigationEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new TareasCompletas());
         }

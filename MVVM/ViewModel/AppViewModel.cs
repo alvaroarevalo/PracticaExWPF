@@ -64,6 +64,9 @@ namespace PracticaEx.MVVM.ViewModel
                     Nombre = "Validación de Formularios"
                 }
             };
+            ListaTareasCompletadas = new ObservableCollection<Tareas>();
+            ListaTareasEnProgreso = new ObservableCollection<Tareas>();
+            ListaTareasFinalizadas = new ObservableCollection<Tareas>();
             FiltarTareas();
         }
 
