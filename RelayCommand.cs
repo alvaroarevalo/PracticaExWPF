@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace PracticaEx
 {
-    public class RelayCommand
+    public class RelayCommand :ICommand
     {
 
         // Acción que se ejecutará cuando el comando sea invocado.

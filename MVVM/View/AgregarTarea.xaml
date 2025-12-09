@@ -51,6 +51,8 @@
     <Grid Background="White">
         <StackPanel HorizontalAlignment="Center" Margin="5">
             <TextBlock Text="Añadir Nueva Tarea" FontSize="28" FontWeight="Bold" Margin="0,0,0,80"/>
+            <TextBlock Text="Id:" FontWeight="Bold" FontSize="14" Margin="0,0,0,10"/>
+            <TextBox x:Name="IdTarea" Width="200"/>
             <TextBlock Text="Titulo:" FontWeight="Bold" FontSize="14" Margin="0,0,0,10"/>
             <TextBox x:Name="TituloTarea" Width="200"/>
             <TextBlock Text="Descripcion:" FontWeight="Bold" FontSize="14" Margin="0,10,0,10"/>
