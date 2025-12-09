@@ -29,5 +29,20 @@ namespace PracticaEx.MVVM.View
         {
             MainFrame.Navigate(new TareasCompletas());
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new TareasCompletadas());
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new TareasEnProgreso());
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new TareasFinalizadas());
+        }
     }
 }

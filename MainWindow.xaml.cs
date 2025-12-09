@@ -26,5 +26,10 @@ namespace PracticaEx
         {
             MainFrame.Navigate(new ListaTareas());
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AgregarTarea());
+        }
     }
 }

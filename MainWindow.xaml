@@ -48,12 +48,12 @@
             <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4.5*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
             <Button Content="Lista Tareas" Width="120" Height="50" Margin="10" Click="Button_Click"/>
-            <Button Content="Agregar Tarea" Width="120" Height="50"/>
+            <Button Content="Agregar Tarea" Width="120" Height="50" Click="Button_Click_1"/>
         </StackPanel>
 
         <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>

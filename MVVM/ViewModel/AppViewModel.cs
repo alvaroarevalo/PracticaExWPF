@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PracticaEx.MVVM.ViewModel
 {
@@ -20,6 +21,7 @@ namespace PracticaEx.MVVM.ViewModel
         private string _nuevaDescripcionTarea;
         private int _nuevoIdTarea;
         private string _nuevoEstadoTarea;
+        public ICommand AgregarTareaCommand { get; }
         public AppViewModel()
         {
             ListaTareas = new ObservableCollection<Tareas>()
@@ -68,6 +70,7 @@ namespace PracticaEx.MVVM.ViewModel
             ListaTareasEnProgreso = new ObservableCollection<Tareas>();
             ListaTareasFinalizadas = new ObservableCollection<Tareas>();
             FiltarTareas();
+            AgregarTareaCommand = new RelayCommand(AgregarTarea);
         }
 
         public String NuevoNombreTarea
@@ -118,6 +121,10 @@ namespace PracticaEx.MVVM.ViewModel
             };
             ListaTareas.Add(nuevaTarea);
             OnPropertyChanged();
+            NuevoIdTarea = -1;
+            NuevoNombreTarea = string.Empty;
+            NuevaDescripcionTarea = string.Empty;
+            NuevoEstadoTarea = string.Empty;
         }
 
         public void FiltarTareas()
@@ -131,7 +138,7 @@ namespace PracticaEx.MVVM.ViewModel
                 {
                     ListaTareasEnProgreso.Add(Tarea);
                 }
-                else if (Tarea.Estado == "Finalizada")
+                else if (Tarea.Estado == "Pendiente")
                 {
                     ListaTareasFinalizadas.Add(Tarea);
                 }
