@@ -11,17 +11,13 @@
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ListBox x:Name="ListaTareas" ItemsSource="{Binding ListaTareas}">
+            <ListBox x:Name="ListaTareas" ItemsSource="{Binding ListaTareas}" SelectedItem="{Binding TareaSeleccionada}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="10">
                             <StackPanel Orientation="Horizontal" Margin="5" VerticalAlignment="Center">
                                 <TextBlock Text="Nombre:" Margin="0,0,5,0" FontWeight="Bold"/>
                                 <TextBlock Text="{Binding Nombre}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="5">
-                                <TextBlock Text="Descripcion:" Margin="0,0,5,0" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Descripcion}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="Estado:" Margin="0,0,5,0" FontWeight="Bold"/>

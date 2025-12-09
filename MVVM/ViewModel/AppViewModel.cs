@@ -17,10 +17,12 @@ namespace PracticaEx.MVVM.ViewModel
         public ObservableCollection<Tareas> ListaTareasCompletadas { get; set; }
         public ObservableCollection<Tareas> ListaTareasEnProgreso { get; set; }
         public ObservableCollection<Tareas> ListaTareasFinalizadas { get; set; }
+        private Tareas _tareaSeleccionada;
         private string _nuevoNombreTarea;
         private string _nuevaDescripcionTarea;
         private int _nuevoIdTarea;
         private string _nuevoEstadoTarea;
+        private DateTime _nuevaFechaTarea;
         public ICommand AgregarTareaCommand { get; }
         public AppViewModel()
         {
@@ -31,7 +33,8 @@ namespace PracticaEx.MVVM.ViewModel
                     Descripcion = "Implementar la conexión a la base de datos local (SQLite) para persistencia de datos.",
                     ID = 1,
                     Estado = "En Progreso",
-                    Nombre = "Conexión a Base de Datos"
+                    Nombre = "Conexión a Base de Datos",
+                    FechaCreacion = DateTime.Now
                 },
 
                 new Tareas()
@@ -39,7 +42,8 @@ namespace PracticaEx.MVVM.ViewModel
                     Descripcion = "Diseñar y maquetar la interfaz principal de la aplicación utilizando Grid y StackPanel.",
                     ID = 2,
                     Estado = "Completada",
-                    Nombre = "Maquetación UI Principal"
+                    Nombre = "Maquetación UI Principal",
+                    FechaCreacion = DateTime.Now
                 },
 
                 new Tareas()
@@ -47,7 +51,8 @@ namespace PracticaEx.MVVM.ViewModel
                     Descripcion = "Crear el 'ViewModel' para la vista de listado de elementos y aplicar el patrón MVVM.",
                     ID = 3,
                     Estado = "Pendiente",
-                    Nombre = "Desarrollo del ViewModel"
+                    Nombre = "Desarrollo del ViewModel",
+                    FechaCreacion = DateTime.Now
                 },
 
                 new Tareas()
@@ -55,7 +60,8 @@ namespace PracticaEx.MVVM.ViewModel
                     Descripcion = "Configurar los comandos 'Guardar' y 'Cancelar' utilizando ICommand y 'RelayCommand'.",
                     ID = 4,
                     Estado = "Pendiente",
-                    Nombre = "Implementación de Comandos"
+                    Nombre = "Implementación de Comandos",
+                    FechaCreacion = DateTime.Now
                 },
 
                 new Tareas()
@@ -63,7 +69,8 @@ namespace PracticaEx.MVVM.ViewModel
                     Descripcion = "Añadir validación a los campos de entrada de texto (TextBox) en el formulario de detalles.",
                     ID = 5,
                     Estado = "En Progreso",
-                    Nombre = "Validación de Formularios"
+                    Nombre = "Validación de Formularios",
+                    FechaCreacion = DateTime.Now
                 }
             };
             ListaTareasCompletadas = new ObservableCollection<Tareas>();
@@ -71,6 +78,16 @@ namespace PracticaEx.MVVM.ViewModel
             ListaTareasFinalizadas = new ObservableCollection<Tareas>();
             FiltarTareas();
             AgregarTareaCommand = new RelayCommand(AgregarTarea);
+        }
+
+        public Tareas TareaSeleccionada
+        {
+            get { return _tareaSeleccionada; }
+            set
+            {
+                _tareaSeleccionada = value;
+                OnPropertyChanged();
+            }
         }
 
         public String NuevoNombreTarea
@@ -109,6 +126,15 @@ namespace PracticaEx.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+        public DateTime NuevaFechaTarea
+        {
+            get { return _nuevaFechaTarea; }
+            set
+            {
+                _nuevaFechaTarea = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void AgregarTarea(object parameter)
         {
@@ -117,9 +143,11 @@ namespace PracticaEx.MVVM.ViewModel
                 ID = NuevoIdTarea,
                 Nombre = NuevoNombreTarea,
                 Descripcion = NuevaDescripcionTarea,
-                Estado = NuevoEstadoTarea
+                Estado = NuevoEstadoTarea,
+                FechaCreacion = DateTime.Now
             };
             ListaTareas.Add(nuevaTarea);
+            FiltarTareas();
             OnPropertyChanged();
             NuevoIdTarea = -1;
             NuevoNombreTarea = string.Empty;
@@ -129,6 +157,10 @@ namespace PracticaEx.MVVM.ViewModel
 
         public void FiltarTareas()
         {
+            ListaTareasCompletadas.Clear();
+            ListaTareasEnProgreso.Clear();
+            ListaTareasFinalizadas.Clear();
+
             foreach (var Tarea in ListaTareas)
             {
                 if (Tarea.Estado == "Completada")
